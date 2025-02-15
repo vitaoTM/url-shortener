@@ -15,6 +15,13 @@ class Base62
   end
 
   def self.decode(str)
-    str
+    num = 0
+    s = str.chars.reverse
+
+    s.each_with_index do |e, i|
+      num += ALPHA.index(e) * BASE ** i
+    end
+    num
+    # return BASE if
   end
 end
