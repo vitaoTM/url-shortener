@@ -1,3 +1,9 @@
-<h1><%= @link.url %></h1>
+<div>
 
-<%= line_chart @link.views.group_by_day(:created_at).count %>
+  <h1><%= @link.url %></h1>
+  <div class="content-center">
+    <%= line_chart @link.views.group_by_day(:created_at,
+        range: 1.weeks.ago..Time.now,
+        expand_range: true).count %>
+  </div>
+</div>
