@@ -33,6 +33,7 @@ class LinksController < ApplicationController
 
   def destroy
     @link.destroy
+    redirect_to root_path, notice: "Link has been deleted"
   end
 
   private
