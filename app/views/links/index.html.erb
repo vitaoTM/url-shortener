@@ -1,17 +1,12 @@
-<div>
-  <h1>Link Shortener</h1>
+<%# <div> %>
+  <div class="">
+    <h1 class="">Link Shortener</h1>
+  <%# </div> %>
 
-  <div>
-    <%= form_with model: Link.new do |form| %>
-      <div class="flex gap-2 items center">
-        <%= form.url_field :url, required: true, autofocus: true, placeholder: "https://example.com", class: "flex-grow rounded" %>
-        <%= form.button "Save", class: "px-3 py-2 bg-gray-100 rounded" %>
-      </div>
-    <% end %>
+  <div class="grid grid-flow-row auto-rows-max">
+    <%= render partial: 'form', locals: { link: @link } %>
   </div>
-
-  <div>
+  <div class="mt-8 gap-4 divide-y divide-gray-300">
     <%= render @links %>
   </div>
-
 </div>
