@@ -1,6 +1,7 @@
 <div>
-
+  <%= link_to "Home", root_path %>
   <h1><%= @link.url %></h1>
+  <%= link_to "Edit", edit_link_path(@link) %>
   <div class="content-center">
     <%= line_chart @link.views.group_by_day(:created_at,
         range: 1.weeks.ago..Time.now,
