@@ -23,7 +23,7 @@ RSpec.describe Metadata, type: :model do
   end
   context 'Image description' do
     it 'image' do
-      metadata = Metadata.new("<meta name='og:image' content='https://example.org/favicon.ico'").image
+      metadata = Metadata.new("<meta property='og:image' content='https://example.org/favicon.ico'").image
       expect(metadata).to eq('https://example.org/favicon.ico')
     end
     it 'Missing image' do
