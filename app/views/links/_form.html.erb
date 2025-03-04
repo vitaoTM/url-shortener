@@ -1,5 +1,5 @@
 <%# <div class="w-full max-w-xs"> %>
-  <%= form_with model: link do |form| %>
+  <%= form_with model: link, data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset" } do |form| %>
 
     <div class="flex gap-2 items center py-2 px-3">
       <%= form.url_field :url,
