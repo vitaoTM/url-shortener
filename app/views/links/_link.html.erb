@@ -4,9 +4,8 @@
   <div class="grid grid-cols-10 items-center py-4">
     <div class="inline-block">
       <%= link_to link.to_param, link %>
-    </div>
-    <div class="">
-      <%= link_to view_path(link), target: :_blank, data: { turbo: false }, class: "no-underline" do %>
+
+      <%= link_to view_path(link), target: :_blank, data: { turbo: false }, class: "no-underline px-2" do %>
         <svg xmlns="http://www.w3.org/2000/svg"
           fill="none" viewBox="0 0 24 24"
           stroke-width="1.5"
@@ -18,13 +17,20 @@
         </svg>
       <% end %>
     </div>
-    <div class="col-span-2 text-center inline-block">
+    <%# <div class="flex-1"> %>
       <%= link_to (pluralize link.views_count, "view"), link %>
+    <%# </div> %>
+    <div class="flex text-center px-3">
+      <div class="flex-initial ">
+        <%= button_tag "Copy",
+          class: "px-2 py-2 bg-gray-200 rounded",
+          data: { controller: "clipboard",
+          action: "click->clipboard#copy",
+          clipboard_content_value: view_url(link) }
+        %>
+      </div>
     </div>
-    <div class="inline-block">
-      <%= link_to "Copy", link %>
-    </div>
-    <div class="inline-block col-start-6 col-end-10">
+    <div class="inline-block col-start-5 col-end-10 px-3">
       <%= link.title || link.url %>
       <%= tag.div link.description, class: "text-gray-700 text-xs" %>
     </div>
