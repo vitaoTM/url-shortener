@@ -4,7 +4,7 @@
 
   <div class="mt-4 flex gap-2 items-center">
     <%= link_to "Cancel", @link, class: "btn-primary" %>
-    <%= button_to "Delete", @link, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+    <%= button_to "Delete", @link, method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "btn-danger" %>
   </div>
 
 </div>
