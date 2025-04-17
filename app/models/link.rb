@@ -1,4 +1,6 @@
 class Link < ApplicationRecord
+  # before_action :authenticate_user!
+  belongs_to :user, optional: true
   has_many :views, dependent: :destroy
   scope :recent_first, -> { order(created_at: :desc) }
   validates :url, presence: true
@@ -17,5 +19,10 @@ class Link < ApplicationRecord
 
   def domain
     URI(url).host rescue URI::InvalidURIError
+  end
+
+  def editable_by?(user)
+    return false unless user_id?
+    user_id == user&.id
   end
 end
